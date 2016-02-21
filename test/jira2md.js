@@ -77,6 +77,10 @@ describe('to_markdown', function() {
         var markdown = j2m.to_markdown("bq. This is a long blockquote type thingy that needs to be converted.");
         markdown.should.eql("> This is a long blockquote type thingy that needs to be converted.");
     });
+    it('should convert inline quotes properly', function() {
+        var markdown = j2m.to_markdown("This is {quote} an inline quote {quote} followed by {quote} another one.{quote} Both need to be converted.");
+        markdown.should.eql("This is \n> an inline quote\n followed by \n> another one.\n Both need to be converted.");
+    });
     it('should convert un-ordered lists properly', function() {
         var markdown = j2m.to_markdown("* Foo\n* Bar\n* Baz\n** FooBar\n** BarBaz\n*** FooBarBaz\n* Starting Over");
         markdown.should.eql("* Foo\n* Bar\n* Baz\n * FooBar\n * BarBaz\n  * FooBarBaz\n* Starting Over");

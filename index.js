@@ -58,6 +58,8 @@ J2M.prototype.to_markdown = function(str) {
         .replace(/\[(.+?)\|(.+)\]/g, '[$1]($2)')
         // Single Paragraph Blockquote
         .replace(/^bq\.\s+/gm, '> ')
+        // {quote}
+        .replace(/\{quote\}\s*([^]*?)\s*\{quote\}/gm, '\n> $1\n')
         // Remove color: unsupported in md
         .replace(/\{color:[^}]+\}([^]*)\{color\}/gm, '$1')
         // panel into table
